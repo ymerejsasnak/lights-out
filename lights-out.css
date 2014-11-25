@@ -1,0 +1,12 @@
+body {
+	background: #777;
+}
+
+#grid-container {
+	margin: 5% auto;
+	width: 50%;
+	height: 600px;
+	background: white;
+
+	border: 1px solid black;
+}
