@@ -6,26 +6,32 @@ body {
 	margin: 5% auto;
 	width: 600px;
 	height: 600px;
-	border: 1px solid black;
 }
 
 .light-cell {
 	float: left;
-	width: 118px;
-	height: 118px;
+	width: 114px;
+	height: 114px;
+	margin: 2px;
 	border: 1px solid black;
+	border-radius: 20%;
+	box-shadow: 5px 5px 10px black;
 }
 
 .light-cell:nth-child(5n + 1) {
 	clear: left;
 }
 
+.light-cell:hover {
+	border: 1px solid white;
+}
+
 
 
 .on {
-	background-color: yellow;
+	background: linear-gradient(#fe2, #aa4);
 }
 
 .off {
-	background-color: black;
+	background: linear-gradient(#111, #222);
 }

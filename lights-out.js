@@ -1,17 +1,29 @@
-//1 is 'on' and 0 is 'off'
-var grid = [ [1,1,1,1,1] ,  [1,1,1,1,1] , [1,1,1,1,1] , [1,1,1,1,1] , [1,1,1,1,1] ]  
-
-
 function create_grid() {
-  for (x = 0; x < 5; x++) {
-  	for (y = 0; y < 5; y++) {
-      $("#grid-container").append("<div class='light-cell on'></div>");
+  for (row = 0; row < 5; row++) {
+  	for (col = 0; col < 5; col++) {
+      $("#grid-container").append("<div class='light-cell on' data-row=" + row + " data-col=" + col + "></div>");
+      
   	}
   }
 }
 
 
+function toggle_light(cell) {
+  cell.toggleClass("on");
+  cell.toggleClass("off");
+}
 
+
+function toggle_neighbors(cell) {
+	var row = cell.attr("data-row");
+	var col = cell.attr("data-col");
+
+	toggle_light( $("[data-col=" + col       + "][data-row=" + (row - 1) + "]") );
+	toggle_light( $("[data-col=" + col       + "][data-row=" + (row + 1) + "]") );   //doesn't work??
+	toggle_light( $("[data-col=" + (col - 1) + "][data-row=" + row       + "]") );
+	toggle_light( $("[data-col=" + (col + 1) + "][data-row=" + row       + "]") );   //doesn't work??
+	
+}
 
 
 
@@ -21,8 +33,8 @@ $(document).ready(function() {
   create_grid();
 
   $(".light-cell").click(function() {
-    $(this).toggleClass("on");
-    $(this).toggleClass("off");
+    toggle_light($(this));
+    toggle_neighbors($(this));
   });
 
 });
