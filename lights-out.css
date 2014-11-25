@@ -1,18 +1,22 @@
+html, body {
+	height: 100%;
+}
+
 body {
 	background-color: #777777;
 }
 
 #grid-container {
 	margin: 5% auto;
-	width: 600px;
-	height: 600px;
+	width: 50%;
+	height: 75%;
 }
 
 .light-cell {
 	float: left;
-	width: 114px;
-	height: 114px;
-	margin: 2px;
+	width: 17%;
+	height: 19%;
+	margin: 1px;
 	border: 1px solid black;
 	border-radius: 20%;
 	box-shadow: 5px 5px 10px black;
