@@ -18,10 +18,10 @@ function toggle_neighbors(cell) {
 	var row = cell.attr("data-row");
 	var col = cell.attr("data-col");
 
-	toggle_light( $("[data-col=" + col       + "][data-row=" + (row - 1) + "]") );
-	toggle_light( $("[data-col=" + col       + "][data-row=" + (row + 1) + "]") );   //doesn't work??
-	toggle_light( $("[data-col=" + (col - 1) + "][data-row=" + row       + "]") );
-	toggle_light( $("[data-col=" + (col + 1) + "][data-row=" + row       + "]") );   //doesn't work??
+	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) - 1) + "]") );
+	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) + 1) + "]") );   //doesn't work??
+	toggle_light( $("[data-col=" + (parseInt(col) - 1) + "][data-row=" + parseInt(row)       + "]") );
+	toggle_light( $("[data-col=" + (parseInt(col) + 1) + "][data-row=" + parseInt(row)       + "]") );   //doesn't work??
 	
 }
 
