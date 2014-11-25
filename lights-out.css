@@ -1,12 +1,31 @@
 body {
-	background: #777;
+	background-color: #777777;
 }
 
 #grid-container {
 	margin: 5% auto;
-	width: 50%;
+	width: 600px;
 	height: 600px;
-	background: white;
-
 	border: 1px solid black;
+}
+
+.light-cell {
+	float: left;
+	width: 118px;
+	height: 118px;
+	border: 1px solid black;
+}
+
+.light-cell:nth-child(5n + 1) {
+	clear: left;
+}
+
+
+
+.on {
+	background-color: yellow;
+}
+
+.off {
+	background-color: black;
 }
