@@ -39,6 +39,12 @@ function randomize_grid() {
 }
 
 
+function reset_grid() {
+  $(".light-cell").addClass("on");
+  $(".light-cell").removeClass("off");
+}
+
+
 function check_win() {
   var all_off = true;
   $(".light-cell").each(function() {
@@ -78,6 +84,11 @@ $(document).ready(function() {
   
   $("#randomize").click(function() {
     randomize_grid();
+  });
+
+
+  $("#reset").click(function() {
+    reset_grid();
   });
 
 
