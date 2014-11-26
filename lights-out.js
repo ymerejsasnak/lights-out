@@ -25,6 +25,20 @@ function toggle_neighbors(cell) {
 }
 
 
+function randomize_grid() {
+  //to be sure it's solvable, start from all on and randomly toggle them to get the random position
+
+  var toggles = Math.floor(Math.random() * 20) + 10;
+  for (i = 0; i < toggles; i++) {
+    var random_row = Math.floor(Math.random() * 5); //random integer 0 to 4
+    var random_col = Math.floor(Math.random() * 5); 
+    
+    toggle_light(     $("[data-col=" + random_col + "][data-row=" + random_row + "]"));
+    toggle_neighbors( $("[data-col=" + random_col + "][data-row=" + random_row + "]"));
+  }  
+}
+
+
 function check_win() {
   var all_off = true;
   $(".light-cell").each(function() {
@@ -43,21 +57,28 @@ $(document).ready(function() {
   create_grid();
   move_count = 0;
 
+
   $(".light-cell").click(function() {
     
     toggle_light($(this));
     toggle_neighbors($(this));
+    
     move_count++;
     $("#moves").text("Moves made: " + move_count);
     
+    
     if (check_win()) {
       $("body").append("<h1 id='win-message'>CONGRATULATIONS!  YOU ARE SMART!</h1>");  
-      window.setTimeout(function() { location.reload() }, 2000);
+      window.setTimeout(function() { location.reload() }, 2500);
       move_count = 0;
     }
   
   });
 
+  
+  $("#randomize").click(function() {
+    randomize_grid();
+  });
 
 
 });

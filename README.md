@@ -3,6 +3,7 @@ lights-out
 
 Browser Lights Out game.  For fun and practice with html/css/js/jq
 <br>
+Need to work on responsiveness of display!  especially font sizes!
 <br>
 Optional stuff to add later:<br>
 -option to have randomized start position [pretty easy]<br>
