@@ -1,11 +1,9 @@
 lights-out
 ==========
 
-Browser Lights Out game.  For fun and practice with html/css/js/jQ.
+Browser Lights Out game.  For fun and practice with html/css/js/jq
 <br>
 <br>
-Need to implement:<br>
--game completed detector<br>
 Optional stuff to add later:<br>
 -keep count of moves<br>
 -option to have randomized start position<br>
@@ -14,7 +12,7 @@ Optional stuff to add later:<br>
 
 <br>
 <br>
-after some research learned that any size square IS solvable (From all on to all off)<br>
-in order for a randomized board to work, start with a regular all on board, then randomly toggle cells to acheive a random start position<br>
-three states is also solvable<br>
+-after some research learned that any size square IS solvable (From all on to all off)<br>
+-in order for a randomized board to work, start with a regular all on board, then randomly toggle cells to acheive a random start position<br>
+-three states is also solvable<br>
 

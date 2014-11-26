@@ -25,6 +25,17 @@ function toggle_neighbors(cell) {
 }
 
 
+function check_win() {
+  var all_off = true;
+  $(".light-cell").each(function() {
+    if ($(this).hasClass("on")) {
+      all_off = false;
+    } 
+  });
+  return all_off;
+}
+
+
 
 
 $(document).ready(function() {
@@ -32,8 +43,17 @@ $(document).ready(function() {
   create_grid();
 
   $(".light-cell").click(function() {
+    
     toggle_light($(this));
     toggle_neighbors($(this));
+    
+    if (check_win()) {
+      $("body").append("<h1 id='win-message'>CONGRATULATIONS!  YOU ARE SMART!</h1>");  
+      window.setTimeout(function() { location.reload() }, 2000);
+    }
+  
   });
+
+
 
 });

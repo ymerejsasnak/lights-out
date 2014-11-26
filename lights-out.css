@@ -3,11 +3,13 @@ body {
 	height: 90vh;
 }
 
+
 #grid-container {
 	margin: 5% auto;
 	width: 50%;
 	height: 75%;
 }
+
 
 .light-cell {
 	float: left;
@@ -35,4 +37,13 @@ body {
 
 .off {
 	background: linear-gradient(#111, #222);
+}
+
+
+#win-message {
+	text-align: center;
+	font-family: courier;
+	font-size: 4em;
+	background: linear-gradient(#e48, #d34);
+	box-shadow: 0 0 10px white;
 }
