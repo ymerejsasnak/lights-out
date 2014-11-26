@@ -41,15 +41,19 @@ function check_win() {
 $(document).ready(function() {
   
   create_grid();
+  move_count = 0;
 
   $(".light-cell").click(function() {
     
     toggle_light($(this));
     toggle_neighbors($(this));
+    move_count++;
+    $("#moves").text("Moves made: " + move_count);
     
     if (check_win()) {
       $("body").append("<h1 id='win-message'>CONGRATULATIONS!  YOU ARE SMART!</h1>");  
       window.setTimeout(function() { location.reload() }, 2000);
+      move_count = 0;
     }
   
   });

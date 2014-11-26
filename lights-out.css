@@ -1,10 +1,30 @@
 body {
 	background: linear-gradient(#eee, #777);
-	height: 90vh;
+	height: 100vh;
+}
+
+#sidebar {
+	float: left;
+	width: 25%;
+	height: 75%;
+  margin-top: 5%;
+}
+
+#moves {
+  float: left;
+  padding: .5%;
+  margin-top: 10%;
+  margin-left: 10%;
+  font-size: 1em;
+  border: 1px solid black;
+  box-shadow: 1px 1px 5px black;
+  background: white;
 }
 
 
+
 #grid-container {
+	float: left;
 	margin: 5% auto;
 	width: 50%;
 	height: 75%;
@@ -43,7 +63,7 @@ body {
 #win-message {
 	text-align: center;
 	font-family: courier;
-	font-size: 4em;
+	font-size: 40px; /*how can I get this to scale properly???? */
 	background: linear-gradient(#e48, #d34);
 	box-shadow: 0 0 10px white;
 }
