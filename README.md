@@ -6,7 +6,7 @@ Browser Lights Out game.  For fun and practice with html/css/js/jq
 Need to work on responsiveness of display!  especially font sizes!
 <br>
 Optional stuff to add later:<br>
--3 states mode (2 different 'on's and one 'off') [not too hard, but more work]<br>
+-change shape to X rather than +<br>
 -customizable grid size (will have to set the size of cells from js for this I think) [tricky on the css side mostly]<br>
 
 
