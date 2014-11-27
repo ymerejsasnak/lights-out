@@ -8,6 +8,11 @@ function create_grid() {
 }
 
 
+function show_moves(move_count) {
+  $("#moves").text("Moves made: " + move_count);
+}
+
+
 function toggle_light(cell) {
   cell.toggleClass("on");
   cell.toggleClass("off");
@@ -42,6 +47,7 @@ function randomize_grid() {
 function reset_grid() {
   $(".light-cell").addClass("on");
   $(".light-cell").removeClass("off");
+  show_moves(0);
 }
 
 
@@ -70,13 +76,16 @@ $(document).ready(function() {
     toggle_neighbors($(this));
     
     move_count++;
-    $("#moves").text("Moves made: " + move_count);
+    show_moves(move_count);
     
     
     if (check_win()) {
       $("body").append("<h1 id='win-message'>CONGRATULATIONS!  YOU ARE SMART!</h1>");  
-      window.setTimeout(function() { location.reload() }, 2500);
-      move_count = 0;
+      window.setTimeout(function() { 
+        reset_grid();
+        move_count = 0;
+        $("h1").remove();
+       }, 2500); //2.5 second delay for setTimeout
     }
   
   });
@@ -89,6 +98,7 @@ $(document).ready(function() {
 
   $("#reset").click(function() {
     reset_grid();
+    move_count = 0;
   });
 
 
