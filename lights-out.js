@@ -1,10 +1,11 @@
-function create_grid() {
-  for (row = 0; row < 5; row++) {
-  	for (col = 0; col < 5; col++) {
+function create_grid(grid_size) {
+  for (row = 0; row < grid_size; row++) {
+  	for (col = 0; col < grid_size; col++) {
       $("#grid-container").append("<div class='light-cell on' data-row=" + row + " data-col=" + col + "></div>");
-      
-  	}
+    }
   }
+  $(".light-cell").css("width", (100 / grid_size) + "%");
+  $(".light-cell").css("height", (100 / grid_size) + "%");
 }
 
 
@@ -60,13 +61,13 @@ function toggle_neighbors(cell, pattern, game_mode) {
 }
 
 
-function randomize_grid(pattern, game_mode) {
+function randomize_grid(grid_size, pattern, game_mode) {
   //to be sure it's solvable, start from all on and randomly toggle them to get the random position
 
   var toggles = Math.floor(Math.random() * 20) + 10;
   for (i = 0; i < toggles; i++) {
-    var random_row = Math.floor(Math.random() * 5); //random integer 0 to 4
-    var random_col = Math.floor(Math.random() * 5); 
+    var random_row = Math.floor(Math.random() * grid_size); //random integer 0 to grid_size - 1
+    var random_col = Math.floor(Math.random() * grid_size); 
     
     toggle_light(     $("[data-col=" + random_col + "][data-row=" + random_row + "]"), game_mode);
     toggle_neighbors( $("[data-col=" + random_col + "][data-row=" + random_row + "]"), pattern, game_mode);
@@ -100,13 +101,14 @@ function check_win() {
 
 $(document).ready(function() {
   
-  create_grid();
-  pattern = "+" //on-off pattern default
-  game_mode = 2; //starts on two states mode
-  move_count = 0;
+  var grid_size = 5;
+  create_grid(grid_size);
+  var move_count = 0;
+  var pattern = "+"; //on-off pattern default
+  var game_mode = 2; //starts on two states mode
+  
 
-
-  $(".light-cell").click(function() {
+  $("#grid-container").on("click", ".light-cell", function() {
     
     toggle_light($(this), game_mode);
     toggle_neighbors($(this), pattern, game_mode);
@@ -124,6 +126,22 @@ $(document).ready(function() {
        }, 2500); //2.5 second delay for setTimeout
     }
   
+  });
+
+
+  $("#grid-size").click(function () {
+    grid_size = prompt("How many lights per side (2 - 10)?");
+    if (grid_size > 10) {
+      grid_size = 10;
+    } 
+    if (grid_size < 2) {
+      grid_size = 2;
+    }
+    
+    $(".light-cell").remove();
+    create_grid(grid_size);
+    reset_grid();
+    move_count = 0;
   });
 
   
@@ -144,7 +162,7 @@ $(document).ready(function() {
 
 
   $("#randomize").click(function() {
-    randomize_grid(pattern, game_mode);
+    randomize_grid(grid_size, pattern, game_mode);
   });
 
 

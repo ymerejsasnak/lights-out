@@ -62,20 +62,16 @@ button:active {
 
 
 .light-cell {
-	float: left;
-	width: 17%;
-	height: 19%;
-	margin: 1px;
-	border: 1px solid black;
+	display: inline-block;
 	border-radius: 20%;
 	box-shadow: 5px 5px 10px black;
+  box-sizing: border-box;
+  border: 1px solid black;
+
+	/*width and height now set in script*/
 }
 
-.light-cell:nth-child(5n + 1) {
-	clear: left;
-}
-
-.light-cell:hover {
+.light-cell:hover { 
 	border: 1px solid white;
 }
 
