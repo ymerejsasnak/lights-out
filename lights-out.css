@@ -12,7 +12,8 @@ body {
 
 #moves, #pattern, #mode {
 	padding: 1%;
-  margin-left: 10%;
+  margin: 0 auto;
+  margin-top: 2%;
   width: 42%;
   font-size: 1em;
   border: 1px solid black;
@@ -33,9 +34,10 @@ body {
 
 button {
 	display: block;
-	margin-top: 10%;
-	margin-left: 10%;
+	margin: 0 auto;
+	margin-top: 9%;
 	padding: 5%;
+	width: 50%;
 	background: linear-gradient(#fff, #ddd);
 	border: 1px solid black;
 	border-radius: 15%;
