@@ -130,12 +130,12 @@ $(document).ready(function() {
 
 
   $("#grid-size").click(function () {
-    grid_size = prompt("How many lights per side (2 - 10)?");
+    grid_size = prompt("How many lights per side (3 - 10)?");
     if (grid_size > 10) {
       grid_size = 10;
     } 
-    if (grid_size < 2) {
-      grid_size = 2;
+    if (grid_size < 3) {
+      grid_size = 3;
     }
     
     $(".light-cell").remove();
