@@ -73,6 +73,10 @@ button:active {
 	background: linear-gradient(#fe2, #aa4);
 }
 
+.on2 {
+	background: linear-gradient(#882, #663);
+}
+
 .off {
 	background: linear-gradient(#111, #222);
 }

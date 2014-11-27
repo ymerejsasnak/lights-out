@@ -13,24 +13,44 @@ function show_moves(move_count) {
 }
 
 
-function toggle_light(cell) {
-  cell.toggleClass("on");
-  cell.toggleClass("off");
+function toggle_light(cell, game_mode) {
+  
+  if (game_mode === 2) {
+    cell.toggleClass("on");
+    cell.toggleClass("off");
+  }
+
+  if (game_mode === 3) {
+    
+    if (cell.hasClass("on")) {
+        cell.addClass("on2");
+        cell.removeClass("on");
+    } 
+    else if (cell.hasClass("on2")) {
+        cell.addClass("off");
+        cell.removeClass("on2");
+    } 
+    else if (cell.hasClass("off")) {
+        cell.addClass("on");
+        cell.removeClass("off");
+    }
+  }
+
 }
 
 
-function toggle_neighbors(cell) {
+function toggle_neighbors(cell, game_mode) {
 	var row = cell.attr("data-row");
 	var col = cell.attr("data-col");
 
-	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) - 1) + "]") );
-	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) + 1) + "]") ); 
-	toggle_light( $("[data-col=" + (parseInt(col) - 1) + "][data-row=" + parseInt(row)       + "]") );
-	toggle_light( $("[data-col=" + (parseInt(col) + 1) + "][data-row=" + parseInt(row)       + "]") ); 	
+	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) - 1) + "]"), game_mode );
+	toggle_light( $("[data-col=" + parseInt(col)       + "][data-row=" + (parseInt(row) + 1) + "]"), game_mode ); 
+	toggle_light( $("[data-col=" + (parseInt(col) - 1) + "][data-row=" + parseInt(row)       + "]"), game_mode );
+	toggle_light( $("[data-col=" + (parseInt(col) + 1) + "][data-row=" + parseInt(row)       + "]"), game_mode ); 	
 }
 
 
-function randomize_grid() {
+function randomize_grid(game_mode) {
   //to be sure it's solvable, start from all on and randomly toggle them to get the random position
 
   var toggles = Math.floor(Math.random() * 20) + 10;
@@ -38,14 +58,15 @@ function randomize_grid() {
     var random_row = Math.floor(Math.random() * 5); //random integer 0 to 4
     var random_col = Math.floor(Math.random() * 5); 
     
-    toggle_light(     $("[data-col=" + random_col + "][data-row=" + random_row + "]"));
-    toggle_neighbors( $("[data-col=" + random_col + "][data-row=" + random_row + "]"));
+    toggle_light(     $("[data-col=" + random_col + "][data-row=" + random_row + "]"), game_mode);
+    toggle_neighbors( $("[data-col=" + random_col + "][data-row=" + random_row + "]"), game_mode);
   }  
 }
 
 
 function reset_grid() {
   $(".light-cell").addClass("on");
+  $(".light-cell").removeClass("on2");
   $(".light-cell").removeClass("off");
   show_moves(0);
 }
@@ -54,7 +75,7 @@ function reset_grid() {
 function check_win() {
   var all_off = true;
   $(".light-cell").each(function() {
-    if ($(this).hasClass("on")) {
+    if ( $(this).hasClass("on") || $(this).hasClass("on2") ) {
       all_off = false;
     } 
   });
@@ -64,16 +85,20 @@ function check_win() {
 
 
 
+
+
+
 $(document).ready(function() {
   
   create_grid();
+  game_mode = 2; //starts on two states mode
   move_count = 0;
 
 
   $(".light-cell").click(function() {
     
-    toggle_light($(this));
-    toggle_neighbors($(this));
+    toggle_light($(this), game_mode);
+    toggle_neighbors($(this), game_mode);
     
     move_count++;
     show_moves(move_count);
@@ -91,8 +116,15 @@ $(document).ready(function() {
   });
 
   
+  $("#game-mode").click(function() {
+    game_mode = 5 - game_mode; //math trick to switch between 2 states mode and 3 states mode
+    reset_grid();
+    move_count = 0;
+  });
+
+
   $("#randomize").click(function() {
-    randomize_grid();
+    randomize_grid(game_mode);
   });
 
 
