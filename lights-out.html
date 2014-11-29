@@ -23,7 +23,18 @@
         Light states: <span> 2 </span>
       </p>
 
-      <button id="grid-size">Set grid size</button>
+      <div id="size-select-container">
+        <label for="size-selector">Grid size &nbsp</label>
+        <select name="size-selector" id="grid-size">
+          <option value=3> 3 x 3 </option>
+          <option value=4> 4 x 4 </option>
+          <option value=5 selected> 5 x 5 </option>
+          <option value=6> 6 x 6 </option>
+          <option value=7> 7 x 7 </option>
+          <option value=8> 8 x 8 </option>
+        </select>
+      </div>
+
       <button id="change-pattern">Change light pattern</button>
       <button id="game-mode">Switch game mode</button>
       <button id="randomize">Randomize lights</button>

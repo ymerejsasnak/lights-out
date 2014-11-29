@@ -129,15 +129,9 @@ $(document).ready(function() {
   });
 
 
-  $("#grid-size").click(function () {
-    grid_size = prompt("How many lights per side (3 - 10)?");
-    if (grid_size > 10) {
-      grid_size = 10;
-    } 
-    if (grid_size < 3) {
-      grid_size = 3;
-    }
-    
+  $("#grid-size").change(function () {
+    grid_size = $("option:selected").attr("value");
+        
     $(".light-cell").remove();
     create_grid(grid_size);
     reset_grid();
