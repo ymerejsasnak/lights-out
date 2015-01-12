@@ -87,7 +87,8 @@ button:active {
 	box-shadow: 5px 5px 10px black;
   box-sizing: border-box;
   border: 1px solid black;
-
+  
+  
 	/*width and height now set in script*/
 }
 
